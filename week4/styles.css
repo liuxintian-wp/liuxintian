@@ -11,4 +11,23 @@
 @media(max-width:700px){.explorer-layout{grid-template-columns:minmax(0,1fr)}.explorer-layout .place img{height:240px}.map-card{padding:1rem}}
 .map-pending{min-height:200px;display:flex;align-items:center;justify-content:center;padding:1.5rem;text-align:center;color:#4b5e56;background:#edf2ec;border:1px dashed #a9bbb0}
 .meta{color:#4b5e56;font-size:.95rem;margin-top:-.5rem}.source{font-size:.9rem;color:#63766c;overflow-wrap:anywhere}.status.ok{color:#245e4f}
-.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:720px;margin:0 0 1.8rem}.photos figure{margin:0;background:#fff;border:1px solid #e0e9df;padding:.6rem}.photos img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}.photos figcaption{font-size:.92rem;color:#4b5e56;margin-top:.4rem}.photos .credit{grid-column:1/-1;margin:0}
+.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:720px;margin:2rem 0 0}.photos figure{margin:0;background:#fff;border:1px solid #e0e9df;padding:.6rem}.photos img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}.photos figcaption{font-size:.92rem;color:#4b5e56;margin-top:.4rem}.photos .credit{grid-column:1/-1;margin:0}
+/* 귀여운 효과 */
+.bubbles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.bubbles span{position:absolute;bottom:-60px;border-radius:50%;opacity:.55;box-shadow:inset -4px -6px 10px rgba(255,255,255,.7);animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translate(0,0) scale(.8)}50%{transform:translate(24px,-55vh) scale(1)}100%{transform:translate(-12px,-115vh) scale(1.1)}}
+header,main{position:relative;z-index:1}
+.sparkle{position:fixed;z-index:50;pointer-events:none;font-size:15px;transform:translate(-50%,-50%);animation:pop .7s ease-out forwards}
+@keyframes pop{to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.3);opacity:0}}
+.photos figure{border-radius:14px;transition:transform .25s ease,box-shadow .25s ease}
+.photos figure:nth-child(1){transform:rotate(-1.5deg)}.photos figure:nth-child(2){transform:rotate(1.5deg)}
+.photos figure:hover{transform:rotate(0) translateY(-6px) scale(1.03);box-shadow:0 12px 24px rgba(217,102,122,.25)}
+.photos img{border-radius:10px}
+.photos figure:hover img{animation:wiggle .5s ease}
+@keyframes wiggle{25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+.tab-btn{border-radius:999px;transition:transform .15s ease}
+.tab-btn:hover{transform:translateY(-2px)}
+.tab-btn:active{transform:scale(.94)}
+.tab-btn[aria-pressed=true]{background:#d9667a;border-color:#d9667a}
+.card{border-radius:16px}
+@media(prefers-reduced-motion:reduce){.bubbles,.sparkle{display:none}.photos figure,.photos figure:hover,.tab-btn:hover,.tab-btn:active{transform:none}.photos figure:hover img{animation:none}}
