@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>팝마트 데이터 살펴보기</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html">CAMPUS NOTES <span>· 04</span></a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="index.html">장소 탐색</a>
+    <a href="statistics.html" aria-current="page">데이터 살펴보기</a>
+    <a href="game.html">별 모으기</a>
+  </nav>
+</header>
+<main>
+  <div class="hero">
+    <p class="eyebrow">DATA LAB · POP MART</p>
+    <h1>숫자로 보는 팝마트</h1>
+    <p>지역별 연간 매출과 고객층, 두 가지 질문으로 팝마트를 살펴봅니다.</p>
+  </div>
+
+  <div class="tabs" aria-label="그래프 선택">
+    <button type="button" class="tab-btn" data-panel="panel-sales" aria-pressed="true">지역별 매출</button>
+    <button type="button" class="tab-btn" data-panel="panel-audience" aria-pressed="false">고객층 분석</button>
+  </div>
+
+  <p id="status" class="status" role="status">데이터를 불러오는 중입니다.</p>
+
+  <section class="card" id="panel-sales" aria-labelledby="title-sales">
+    <h2 id="title-sales">중국 내륙과 해외, 어디에서 더 빨리 성장했을까?</h2>
+    <p class="meta">대상: 팝마트 그룹 매출 · 기간: 2023~2025 회계연도 · 단위: 억 위안(인민폐)</p>
+    <div class="chart-wrap">
+      <canvas id="chart-sales" role="img" aria-label="2023~2025년 중국 내륙, 해외 합계, 동아시아·홍콩·마카오·대만 매출 선 그래프">2023~2025년 지역별 매출 선 그래프입니다.</canvas>
+    </div>
+    <p>2023년에서 2025년 사이 중국 내륙 매출은 52.35억에서 208.52억 위안으로 약 4.0배, 홍콩·마카오·대만 및 해외 합계는 10.66억에서 162.68억 위안으로 약 15.3배 늘었습니다. 한국·일본이 포함된 동아시아·홍콩·마카오·대만 매출도 2024년 13.86억 위안으로 전년의 약 2.8배였습니다. 저는 이 차이를 보고 최근 성장에서 해외 확장의 몫이 중국 내륙보다 크다고 해석합니다. 다만 팝마트는 한국·일본 매출을 국가별로 공개하지 않고, 2025년에는 지역 구분이 바뀌어 동아시아 값이 없으며, 2023년 동아시아 값은 공개된 성장률로 계산한 추정치라는 한계가 있습니다.</p>
+    <p class="source">출처: 팝마트 연간 실적 보도 — <a href="https://www.yicai.com/news/102036534.html">2023 · 제일재경</a>, <a href="https://www.news.cn/tech/20250326/76d665d54199492f8980a6f26fddd6a1/c.html">2024 · 신화망</a>, <a href="https://pdf.dfcfw.com/pdf/H3_AP202504071652770438_1.pdf">2024 지역별 · 중신건투 보고서</a>, <a href="https://zhuanlan.zhihu.com/p/2020429286251721141">2025 · 지후</a> · <a href="data/popmart_sales.csv">CSV 내려받기</a></p>
+  </section>
+
+  <section class="card" id="panel-audience" aria-labelledby="title-audience" hidden>
+    <h2 id="title-audience">팝마트를 사는 사람은 누구일까?</h2>
+    <p class="meta">대상: 팝마트 핵심 사용자(2020년 회사 발표), 중국 내륙 회원(2025년 실적) · 단위: %</p>
+    <div class="chart-wrap">
+      <canvas id="chart-audience" role="img" aria-label="팝마트 고객층 지표 가로 막대 그래프: 여성 비율, 30세 미만 비율, Z세대 비율, 회원 매출 기여율, 회원 재구매율">팝마트 고객층 지표 가로 막대 그래프입니다.</canvas>
+    </div>
+    <p>2020년 회사 발표에서 핵심 사용자의 75%는 여성, 58%는 30세 미만이었고, 2025년 중국 내륙에서는 회원이 매출의 93.7%를 차지하며 재구매율은 55.7%였습니다. 저는 이를 젊은 여성 중심의 충성 고객이 반복 구매로 매출을 받치는 구조라고 해석합니다. 하지만 두 자료는 조사 시점과 대상이 달라 직접 비교할 수 없고, 해외를 포함한 최근 증권사 설문에서는 남녀 비율이 비슷하다는 결과도 있어 현재 전체 고객을 대표한다고 단정할 수는 없습니다.</p>
+    <p class="source">출처: <a href="https://news.pedaily.cn/202006/455789.shtml">핵심 사용자 구성 · 팝마트 CMO 발표(2020)</a>, <a href="https://c.m.163.com/news/a/KOS9LRNN0519DFFO.html">2025 회원 지표 · 북경상보</a>, <a href="https://wallstreetcn.com/articles/3764314">해외 포함 소비자 설문 · 화이트월스트리트</a> · <a href="data/popmart_audience.csv">CSV 내려받기</a></p>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<script src="statistics.js"></script>
+</body>
+</html>
