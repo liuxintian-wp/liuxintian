@@ -4,9 +4,9 @@
 
 GitHub Pages에 배포할 경우 경로는 다음과 같습니다. 현재 배포 여부는 확인하지 못했습니다.
 
-- 장소 탐색: https://liangwanqi1016-dot.github.io/liuxintian/week4/
-- 통계: https://liangwanqi1016-dot.github.io/liuxintian/week4/statistics.html
-- 게임: https://liangwanqi1016-dot.github.io/liuxintian/week4/game.html
+- 장소 탐색: https://liuxintian-wp.github.io/liuxintian/week4/
+- 통계: https://liuxintian-wp.github.io/liuxintian/week4/statistics.html
+- 게임: https://liuxintian-wp.github.io/liuxintian/week4/game.html
 
 장소 버튼은 학교 식당, 스터디룸, 학교 잔디밭의 사진·설명과 지도 상태를 페이지 새로고침 없이 함께 전환합니다. 사진은 사용자가 제공한 원본과 일치하는 GitHub 사진을 `week4/images/`에 저장하여 상대 경로로 불러옵니다.
 
@@ -85,7 +85,7 @@ Codex가 HTML/CSS/JavaScript 작성과 위 자동 검사를 도왔습니다. 작
 
 각 질문의 A는 조용한 선택, B는 활동적인 선택입니다. B가 0~2개면 고요한 충전형, 3~5개면 느긋한 균형형, 6~8개면 활동 탐험형입니다. 각 유형에 맞는 짧은 하루 제안을 제공합니다. 두 번째 참가자가 완료하면 직전의 다른 완료 기록과 같은 선택 및 다른 선택의 개수를 보여 줍니다. 별명은 선택 사항이며 빈 값은 ‘캠퍼스 친구’가 됩니다. 실명이나 학번, 연락처를 입력하지 않도록 안내합니다.
 
-예상 GitHub Pages 경로: https://liangwanqi1016-dot.github.io/liuxintian/week5/ (배포 및 접속 **미확인**).
+예상 GitHub Pages 경로: https://liuxintian-wp.github.io/liuxintian/week5/ (배포 및 접속 **미확인**).
 
 ## 저장 방식
 
