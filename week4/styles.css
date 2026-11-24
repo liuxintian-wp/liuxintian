@@ -11,3 +11,4 @@
 @media(max-width:700px){.explorer-layout{grid-template-columns:minmax(0,1fr)}.explorer-layout .place img{height:240px}.map-card{padding:1rem}}
 .map-pending{min-height:200px;display:flex;align-items:center;justify-content:center;padding:1.5rem;text-align:center;color:#4b5e56;background:#edf2ec;border:1px dashed #a9bbb0}
 .meta{color:#4b5e56;font-size:.95rem;margin-top:-.5rem}.source{font-size:.9rem;color:#63766c;overflow-wrap:anywhere}.status.ok{color:#245e4f}
+.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:720px;margin:0 0 1.8rem}.photos figure{margin:0;background:#fff;border:1px solid #e0e9df;padding:.6rem}.photos img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}.photos figcaption{font-size:.92rem;color:#4b5e56;margin-top:.4rem}.photos .credit{grid-column:1/-1;margin:0}
