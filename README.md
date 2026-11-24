@@ -1,8 +1,18 @@
+# 웹프로그래밍 주차별 과제
+
+- 홈: https://liuxintian-wp.github.io/liuxintian/
+- 4주차: [장소 탐색](https://liuxintian-wp.github.io/liuxintian/week4/) · [팝마트 통계](https://liuxintian-wp.github.io/liuxintian/week4/statistics.html) · [게임](https://liuxintian-wp.github.io/liuxintian/week4/game.html)
+- 5주차: [취향 밸런스 게임](https://liuxintian-wp.github.io/liuxintian/week5/)
+- 6주차 (Render): [이미지 처리](https://liuxintian-image-week6.onrender.com/) · [TTS](https://liuxintian-tts-week6.onrender.com/tts)
+- 7주차 (Render): [한 줄 게시판](https://liuxintian-board-week7.onrender.com/)
+
+Render 무료 서비스는 유휴 시 중지되어 첫 접속에 약 1분이 걸릴 수 있습니다.
+
 # 4주차: JavaScript 실습
 
 ## 페이지
 
-GitHub Pages에 배포할 경우 경로는 다음과 같습니다. 현재 배포 여부는 확인하지 못했습니다.
+GitHub Pages 주소입니다. 2026-11-24에 세 페이지가 열리는 것을 확인했습니다.
 
 - 장소 탐색: https://liuxintian-wp.github.io/liuxintian/week4/
 - 통계: https://liuxintian-wp.github.io/liuxintian/week4/statistics.html
@@ -53,6 +63,10 @@ GitHub Pages에 배포할 경우 경로는 다음과 같습니다. 현재 배포
 - `<button class="tab-btn" data-panel="panel-sales">`의 `data-panel` 값이 section의 id와 같습니다. 클릭하면 해당 section만 `hidden`을 풀고 나머지는 숨기며 `aria-pressed`로 선택 상태를 알립니다.
 - 진짜 `<button>`이라 Tab으로 이동하고 Enter·Space로 누를 수 있습니다. 첫 접속에는 첫 탭만 보이고, 숨겨졌던 그래프는 표시 후 `chart.resize()`로 크기를 맞춥니다.
 
+### 사진과 효과
+- 그래프 아래에 팝마트 피규어 사진 두 장(`week4/images/molly-burgerman.webp`, `week4/images/crybaby.webp`)을 넣었습니다. 작성자가 제공한 사진을 320px 너비 WebP로 줄였습니다.
+- `effects.js`: 배경에 떠다니는 비눗방울과 클릭 위치에 퍼지는 별·하트 효과입니다. 장식 요소는 `aria-hidden`이며 '동작 줄이기' 설정에서는 실행되지 않습니다.
+
 ### 테스트
 - Node 모의 환경에서 정상 CSV 로딩(매출 3개 연도, 지표 5개), 첫 탭만 표시, 두 번째 탭 클릭 시 패널 전환과 `aria-pressed` 변경을 확인했습니다.
 - 잘못된 CSV 테스트 결과: 빈 파일 → "열이 없습니다", 헤더만 있음 → "데이터 행이 없습니다", 숫자 자리에 `abc` → "올바른 수치가 아닙니다", 필수 값 빈칸 → 오류 표시, `percent` 열 이름 변경 → "percent 열이 없습니다", 파일 없음 → "요청 실패 (404)". 모두 0으로 바꾸지 않고 화면에 안내합니다.
@@ -85,7 +99,7 @@ Codex가 HTML/CSS/JavaScript 작성과 위 자동 검사를 도왔습니다. 작
 
 각 질문의 A는 조용한 선택, B는 활동적인 선택입니다. B가 0~2개면 고요한 충전형, 3~5개면 느긋한 균형형, 6~8개면 활동 탐험형입니다. 각 유형에 맞는 짧은 하루 제안을 제공합니다. 두 번째 참가자가 완료하면 직전의 다른 완료 기록과 같은 선택 및 다른 선택의 개수를 보여 줍니다. 별명은 선택 사항이며 빈 값은 ‘캠퍼스 친구’가 됩니다. 실명이나 학번, 연락처를 입력하지 않도록 안내합니다.
 
-예상 GitHub Pages 경로: https://liuxintian-wp.github.io/liuxintian/week5/ (배포 및 접속 **미확인**).
+GitHub Pages 경로: https://liuxintian-wp.github.io/liuxintian/week5/ (2026-11-24 접속 확인).
 
 ## 저장 방식
 
@@ -130,15 +144,21 @@ Flask 테스트 클라이언트에서 세 효과의 PNG 디코딩, 빈 파일, �
 
 ### Render 배포
 
-아직 배포하지 않았으며 외부 URL 및 외부 `/health` 확인 결과는 없습니다. GitHub에 `week6/`을 반영한 뒤 Render에서 New → Web Service로 저장소를 연결하고 다음을 설정합니다.
+2026-11-24에 이 저장소(`liuxintian-wp/liuxintian`)로 Render 무료 웹 서비스를 배포했습니다.
+
+- 이미지 처리: https://liuxintian-image-week6.onrender.com/ (`/health` 응답 `{"status":"ok"}` 확인)
+- TTS: https://liuxintian-tts-week6.onrender.com/tts
+
+이미지 서비스 설정:
 
 - Runtime: Python 3; Root Directory: `week6`
 - Build Command: `pip install -r requirements.txt`
 - Start Command: `gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 120`
-- 환경 변수: `PYTHON_VERSION=3.12.12`; Health Check Path: `/health`
-- 사용 가능하면 Free 선택. 배포 후 실제 `https://<서비스>.onrender.com/health`와 이미지 업로드, 휴대전화 접근을 확인합니다.
+- 환경 변수: `PYTHON_VERSION=3.12.12`; Instance Type: Free
 
-Render [Free 안내](https://render.com/docs/free)에 따르면 무료 서비스는 유휴 시 중지될 수 있습니다. 실제 계정의 가용 플랜과 한도는 배포 시 확인하세요. 지정 의존성의 Render 빌드는 아직 확인하지 못했습니다.
+TTS 서비스 설정: Root Directory `week6`, Build `pip install -r requirements-tts.txt gunicorn==23.0.0 && python -m piper.download_voices en_US-lessac-low --download-dir models`, Start `gunicorn tts_app:app --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 180`, `PYTHON_VERSION=3.12.12`, Free. `requirements-tts.txt`에 gunicorn이 없어 첫 배포가 실패했기 때문에 빌드 명령에서 함께 설치합니다.
+
+Render [Free 안내](https://render.com/docs/free)에 따르면 무료 서비스는 유휴 시 중지될 수 있습니다. 실제 계정의 가용 플랜과 한도는 배포 시 확인하세요. 두 서비스 모두 Render 빌드와 실행을 확인했습니다. 이미지 업로드와 휴대전화 접근은 직접 확인이 필요합니다.
 
 ## 실습 2: Piper TTS (Windows 로컬)
 
@@ -152,13 +172,13 @@ python -m flask --app tts_app run --debug --port 5000
 
 http://127.0.0.1:5000/tts 에서 영어 문장과 발화 길이 배율을 선택합니다. 모델은 [Piper voices](https://huggingface.co/rhasspy/piper-voices)의 `en_US-lessac-low`이며 `models/en_US-lessac-low.onnx`와 `.onnx.json`이 필요합니다. 서버는 첫 요청에서 모델을 불러와 재사용하고 실제 WAV를 생성하도록 작성했습니다. 브라우저는 WAV를 디코딩해 파형을 그리며 생성 시간·길이·크기를 표시합니다. 도서관 및 동아리 행사 방송 문장을 한 번에 입력하는 버튼을 추가했습니다.
 
-빈 문자열, 500자 초과, 비영문, 잘못된 배율은 400이고 모델이 없으면 503입니다. 테스트에서 이 오류 경로와 모델 부재 시 브라우저 안내 및 버튼 복구를 확인했습니다. 로컬 환경에 Piper가 없었고 패키지 설치는 장시간 완료되지 않아 중단했습니다. 모델 호스트에도 직접 연결할 수 없었으며 다운로드 명령은 모듈 부재로 실행되지 않았습니다. 따라서 **두 문장의 실제 추론, WAV 길이·크기·파형 비교 및 파형 스크린샷은 미완료**입니다. 모델을 설치한 환경에서 두 예시 버튼으로 각각 생성해 이 항목을 기록해야 합니다.
+빈 문자열, 500자 초과, 비영문, 잘못된 배율은 400이고 모델이 없으면 503입니다. 테스트에서 이 오류 경로와 모델 부재 시 브라우저 안내 및 버튼 복구를 확인했습니다. 로컬 환경에 Piper가 없었고 패키지 설치는 장시간 완료되지 않아 중단했습니다. 모델 호스트에도 직접 연결할 수 없었으며 다운로드 명령은 모듈 부재로 실행되지 않았습니다. 로컬 추론은 하지 못했지만, Render 배포 후 `/api/tts`에 "Welcome to the campus library."를 보내 200 응답과 약 60 KB WAV(첫 요청, 서버 생성 약 9.3초)를 확인했습니다. **두 예시 문장의 WAV 길이·크기·파형 비교와 파형 스크린샷은 아직 미완료**이며, 배포된 페이지에서 두 예시 버튼으로 각각 생성해 기록해야 합니다.
 
 ## 재현 가능한 테스트와 AI 사용
 
 `python -m unittest discover -s week6/tests -v`로 API 검사를 재현할 수 있습니다. Chrome DevTools 포트 9224와 각각 8767(이미지), 8768(TTS) 포트의 로컬 서버를 준비하면 `node week6/tests/browser-image.js`와 `node week6/tests/browser-tts.js`를 실행할 수 있습니다. TTS 브라우저 테스트는 모델이 없는 상태를 전제로 합니다.
 
-Codex가 서버와 화면을 작성하고 위 테스트 및 시간 측정을 수행했습니다. Python 3.12, Render, 실제 기기, Piper 추론 및 파형은 확인하지 못했으며 사용자의 수동 확인이 필요합니다.
+Codex가 서버와 화면을 작성하고 위 테스트 및 시간 측정을 수행했습니다. Render 배포와 Piper 추론 1회는 2026-11-24에 확인했고, 실제 기기와 파형 비교는 확인하지 못했으며 사용자의 수동 확인이 필요합니다.
 
 # 7주차 · 로그인하는 한 줄 게시판
 
@@ -199,7 +219,7 @@ OK
 
 ## Render 및 학교 제출
 
-Render 외부 URL: **미배포·미확인**. 저장소에 코드를 반영한 다음 Render New → Web Service에서 저장소를 연결합니다.
+Render 외부 URL: https://liuxintian-board-week7.onrender.com/ (2026-11-24 배포, 게시판 첫 화면 표시 확인). 설정은 다음과 같습니다.
 
 - Runtime: Python 3; Root Directory: `week7`
 - Build: `pip install -r requirements.txt`
@@ -210,4 +230,4 @@ Render 외부 URL: **미배포·미확인**. 저장소에 코드를 반영한 �
 
 [Render의 무료 서비스](https://render.com/docs/free)는 재시작·재배포·유휴 중지 시 로컬 SQLite 데이터가 사라질 수 있어 영구 저장을 보장하지 않습니다. 배포 후 외부 URL에서 계정·권한·신고·관리 기능을 확인해야 합니다. Cyber Campus 최종 제출의 GitHub URL, Render URL, 실험 관리자 ID와 PW 중 ID/PW는 학교의 **비공개 제출란에만** 입력합니다. 공개 README, 코드, 스크린샷에는 적지 않습니다.
 
-Codex가 구현, 위 자동 테스트 및 스크린샷을 수행했습니다. 실제 배포, 휴대전화 검사와 학생의 수동 검토는 아직 확인되지 않았습니다.
+Codex가 구현, 위 자동 테스트 및 스크린샷을 수행했습니다. Render 배포와 첫 화면은 확인했습니다. 외부 URL에서의 관리자 로그인·신고·관리 기능, 휴대전화 검사와 학생의 수동 검토는 아직 필요합니다.
